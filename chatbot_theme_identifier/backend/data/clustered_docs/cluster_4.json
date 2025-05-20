@@ -1,0 +1,13 @@
+[
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 7,
+      "text": "U.S. Patent Dec. 11, 2012 Sheet 6 of 8 US D672,309 S\n:\nw\n::::::...--------\nFC,",
+      "type": "digital"
+    },
+    "page": 7,
+    "plain_text": "U.S. Patent Dec. 11, 2012 Sheet 6 of 8 US D672,309 S\n:\nw\n::::::...--------\nFC,",
+    "cluster": 4
+  }
+]

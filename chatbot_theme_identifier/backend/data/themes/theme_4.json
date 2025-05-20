@@ -1,0 +1,47 @@
+[
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 2,
+      "text": "Patent Dec. 11, 2012 Sheet 1 of 8 US D672,309 S",
+      "type": "digital"
+    },
+    "page": 2
+  },
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 3,
+      "text": "U.S. Patent Dec. 11, 2012 Sheet 2 of 8 US D672,309 S\n,",
+      "type": "digital"
+    },
+    "page": 3
+  },
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 5,
+      "text": "U.S. Patent Dec. 11, 2012 Sheet 4 of 8 US D672,309 S\nFG, 4",
+      "type": "digital"
+    },
+    "page": 5
+  },
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 6,
+      "text": "U.S. Patent Dec. 11, 2012 Sheet 5 of 8 US D672,309 S\n&------------------------------------------------------------",
+      "type": "digital"
+    },
+    "page": 6
+  },
+  {
+    "doc_id": "sample_patent.json",
+    "text": {
+      "page": 7,
+      "text": "U.S. Patent Dec. 11, 2012 Sheet 6 of 8 US D672,309 S\n:\nw\n::::::...--------\nFC,",
+      "type": "digital"
+    },
+    "page": 7
+  }
+]

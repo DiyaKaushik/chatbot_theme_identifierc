@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research Chatbot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { padding: 20px; }
+    #answer { white-space: pre-wrap; }
+    .chunk { background: #f8f9fa; border-radius: 4px; padding: 8px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">Research Chatbot</h1>
+
+    <div class="mb-3">
+      <textarea id="queryInput" class="form-control" rows="3" placeholder="Ask your question here..."></textarea>
+    </div>
+    <button id="askBtn" class="btn btn-primary mb-4">Ask</button>
+
+    <div id="loading" class="d-none alert alert-info">Loading...</div>
+
+    <h4>Retrieved Document Chunks:</h4>
+    <div id="retrievedChunks"></div>
+
+    <h4>Generated Answer:</h4>
+    <div id="answer" class="border p-3 bg-light"></div>
+  </div>
+
+  <script>
+    const askBtn = document.getElementById("askBtn");
+    const queryInput = document.getElementById("queryInput");
+    const loading = document.getElementById("loading");
+    const retrievedChunks = document.getElementById("retrievedChunks");
+    const answerDiv = document.getElementById("answer");
+
+    askBtn.onclick = async () => {
+      const query = queryInput.value.trim();
+      if (!query) {
+        alert("Please enter a question.");
+        return;
+      }
+
+      loading.classList.remove("d-none");
+      retrievedChunks.innerHTML = "";
+      answerDiv.textContent = "";
+
+      try {
+        const res = await fetch("/api/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query })
+        });
+        const data = await res.json();
+        loading.classList.add("d-none");
+
+        if (data.error) {
+          alert(data.error);
+          return;
+        }
+
+        // Show retrieved chunks
+        if (data.retrieved && data.retrieved.length > 0) {
+          data.retrieved.forEach((chunk, idx) => {
+            const chunkDiv = document.createElement("div");
+            chunkDiv.className = "chunk";
+            chunkDiv.innerHTML = `<strong>Doc:</strong> ${chunk.doc_id || "Unknown"}, <strong>Page:</strong> ${chunk.page || "N/A"}<br>${chunk.text || ""}`;
+            retrievedChunks.appendChild(chunkDiv);
+          });
+        } else {
+          retrievedChunks.innerHTML = "<em>No relevant document chunks found.</em>";
+        }
+
+        // Show generated answer
+        answerDiv.textContent = data.answer || "[No answer generated]";
+      } catch (err) {
+        loading.classList.add("d-none");
+        alert("Error querying chatbot: " + err.message);
+      }
+    };
+  </script>
+</body>
+</html>
+
+
+

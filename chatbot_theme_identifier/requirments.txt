@@ -1,0 +1,23 @@
+# Core libraries
+numpy
+pandas
+tqdm
+
+# OCR and PDF
+pytesseract
+pdf2image
+PyMuPDF
+
+# NLP + Embeddings
+transformers
+sentence-transformers
+scikit-learn
+
+# Vector Search
+faiss-cpu
+
+# Web framework
+flask
+
+# Utility
+python-dotenv
